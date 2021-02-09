@@ -12,4 +12,6 @@ class Book extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = ['id', 'name', 'description', 'status'];
+
+    public $incrementing = false;
 }

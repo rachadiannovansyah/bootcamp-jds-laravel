@@ -45,7 +45,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $book = Book::create($request->all() + [
-            'id' => Uuid::uuid1()
+            'id' => Uuid::uuid4()->getHex()
         ]);
 
         return new BookResource($book);
