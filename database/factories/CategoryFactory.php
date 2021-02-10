@@ -22,7 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => $this->faker->uuid,
+            'name' => $this->faker->randomElement(['Science', 'Programming', 'Lifestyle', 'Comedi', 'Horror']),
         ];
     }
 }
