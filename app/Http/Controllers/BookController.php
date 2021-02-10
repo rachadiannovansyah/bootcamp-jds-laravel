@@ -45,7 +45,7 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $book = Book::create($request->all() + [
-            'id' => Uuid::uuid4()->getHex()
+            'id' => Uuid::uuid4()->getHex(),
         ]);
 
         return new BookResource($book);
@@ -99,7 +99,7 @@ class BookController extends Controller
     {
         $perPageAllowed = [20, 50, 100, 500];
 
-        if(in_array($perPage, $perPageAllowed)) {
+        if (in_array($perPage, $perPageAllowed)) {
             return $perPage;
         }
 
