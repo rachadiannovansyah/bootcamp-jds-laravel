@@ -81,9 +81,16 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        $author->delete();
+        try {
+            $author->delete();
 
-        return response()->json(['message' => 'Author has been successfully deleted']);
+            return response()->json(['message' => 'Author has been successfully deleted']);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'Delete author is denied!',
+                'error' => $th->getMessage(),
+            ]);
+        }
     }
 
     /**

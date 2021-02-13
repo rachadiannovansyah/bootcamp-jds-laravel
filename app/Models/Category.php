@@ -11,6 +11,8 @@ class Category extends Model
     use HasFactory;
     use Uuid;
 
+    protected $primaryKey = 'id';
+
     public $incrementing = false;
 
     protected $fillable = ['id', 'name'];

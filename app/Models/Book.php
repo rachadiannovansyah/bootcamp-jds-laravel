@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
     use HasFactory;
+    use Uuid;
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['id', 'name', 'description', 'status'];
+    protected $fillable = ['id', 'author_id', 'category_id', 'name', 'description', 'status'];
 
     public $incrementing = false;
 

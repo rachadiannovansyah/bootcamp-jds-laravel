@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
-use Ramsey\Uuid\Uuid;
 
 class BookController extends Controller
 {
@@ -45,7 +44,8 @@ class BookController extends Controller
     public function store(Request $request)
     {
         $book = Book::create($request->all() + [
-            'id' => Uuid::uuid4()->getHex(),
+            'author_id' => $request->author_id,
+            'category_id' => $request->category_id,
         ]);
 
         return new BookResource($book);
