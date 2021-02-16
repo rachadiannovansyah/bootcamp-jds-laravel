@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Ramsey\Uuid\Uuid as Generator;
 
 trait Uuid
@@ -12,11 +11,7 @@ trait Uuid
         parent::boot();
 
         static::creating(function ($model) {
-            try {
-                $model->id = Generator::uuid4()->getHex();
-            } catch (UnsatisfiedDependencyException $e) {
-                abort(500, $e->getMessage());
-            }
+            $model->id = Generator::uuid4();
         });
     }
 }
