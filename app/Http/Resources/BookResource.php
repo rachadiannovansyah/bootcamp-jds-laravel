@@ -17,10 +17,8 @@ class BookResource extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
-            'author_id' => $this->author_id,
-            'author_name' => $this->author->name,
-            'category_id' => $this->category_id,
-            'category_name' => $this->category->name,
+            'author' => $this->author,
+            'category' => $this->category,
             'name' => $this->name,
             'description' => $this->description,
             'status' => $this->status,
