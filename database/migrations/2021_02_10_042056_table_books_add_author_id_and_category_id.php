@@ -15,7 +15,7 @@ class TableBooksAddAuthorIdAndCategoryId extends Migration
     {
         Schema::table('books', function (Blueprint $table) {
             $table->foreignUuid('author_id')->after('id')->constrained();
-            $table->foreignUuid('category_id')->after('author_id')->constrained();;
+            $table->foreignUuid('category_id')->after('author_id')->constrained();
         });
     }
 

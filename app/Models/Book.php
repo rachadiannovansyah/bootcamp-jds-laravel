@@ -13,7 +13,7 @@ class Book extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['id', 'author_id', 'category_id', 'name', 'description', 'status'];
+    protected $fillable = ['author_id', 'category_id', 'name', 'description', 'status'];
 
     public $incrementing = false;
 

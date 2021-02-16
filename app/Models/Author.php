@@ -15,7 +15,7 @@ class Author extends Model
 
     public $incrementing = false;
 
-    protected $fillable = ['id', 'name'];
+    protected $fillable = ['name'];
 
     public function books()
     {
