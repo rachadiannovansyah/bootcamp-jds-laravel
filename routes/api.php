@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
@@ -24,3 +25,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('books', BookController::class);
 Route::apiResource('authors', AuthorController::class);
 Route::apiResource('categories', CategoryController::class);
+
+Route::post('login', [AuthController::class, 'login']);
+Route::group(['prefix' => 'auth', 'middleware' => 'auth:sanctum'], function() {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('logoutall', [AuthController::class, 'logoutall']);
+});
