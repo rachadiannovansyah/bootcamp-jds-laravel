@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResource;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -44,10 +46,7 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $book = Book::create($request->validated() + [
-            'author_id' => $request->author_id,
-            'category_id' => $request->category_id,
-        ]);
+        $book = Book::create($request->validated());
 
         return new BookResource($book);
     }
