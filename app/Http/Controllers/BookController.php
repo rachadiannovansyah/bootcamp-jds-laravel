@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BookStoreRequest;
+use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
@@ -42,9 +42,9 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookStoreRequest $request)
+    public function store(BookRequest $request)
     {
-        $book = Book::create($request->all() + [
+        $book = Book::create($request->validated() + [
             'author_id' => $request->author_id,
             'category_id' => $request->category_id,
         ]);
@@ -70,9 +70,9 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookRequest $request, Book $book)
     {
-        $book->fill($request->all())->save();
+        $book->update($request->validated());
 
         return new BookResource($book);
     }
