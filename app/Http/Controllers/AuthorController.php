@@ -117,10 +117,6 @@ class AuthorController extends Controller
             $records = $records->where('name', 'LIKE', '%' . $request->name . '%');
         }
 
-        if ($request->has('status')) {
-            $records = $records->where('status', 'LIKE', '%' . $request->status . '%');
-        }
-
         return $records;
     }
 }
